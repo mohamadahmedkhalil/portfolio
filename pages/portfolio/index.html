@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/Bewerbungsfoto.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <nav class="nav">
+      <a href="../../index.html" class="logo">
+        <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../../index.html#about">Über mich</a></li>
+        <li><a href="../projects/index.html">Projekte</a></li>
+        <li><a href="../../index.html#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <div class="page-hero-text">
+      <h1>Mein Portfolio</h1>
+      <button class="btn download-btn" onclick="window.print()">
+        Portfolio als PDF speichern
+      </button>
+    </div>
+  </header>
+
+  <main class="projects-page">
+    <div id="print-a4-pages"></div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Mohamad Khalil</p>
+  </footer>
+
+      <script src="projects-data.js"></script>
+      <script src="projects-data.js"></script>
+      <script>
+        function createImageCard(item) {
+          const card = document.createElement("div");
+          card.className = "project-image-card";
+
+          card.innerHTML = `
+            <img src="${item.image}" alt="${item.alt}">
+            <p>${item.text}</p>
+          `;
+
+          return card;
+        }
+
+        function createProjectBlock(project) {
+          const block = document.createElement("section");
+          block.className = "project-detail";
+
+          block.innerHTML = `
+            <a class="project-title-link" href="${project.link}">
+              <div class="project-title-box">${project.title}</div>
+            </a>
+            <div class="project-image-grid"></div>
+          `;
+
+          const grid = block.querySelector(".project-image-grid");
+
+          project.items.forEach((item) => {
+            grid.appendChild(createImageCard(item));
+          });
+
+          return block;
+        }
+
+        function createPrintPage() {
+          const page = document.createElement("section");
+          page.className = "print-a4-page";
+
+          page.innerHTML = `
+            <div class="print-a4-header">
+              <div class="print-header-left">
+                <h1>${portfolioData.profile.name}</h1>
+                <p>${portfolioData.profile.title}</p>
+              </div>
+
+              <div class="print-header-right">
+                <div><strong>E-Mail:</strong> ${portfolioData.profile.email}</div>
+                <div><strong>Telefon:</strong> ${portfolioData.profile.phone}</div>
+                <div><strong>LinkedIn:</strong> <a href="${portfolioData.profile.linkedinUrl}" target="_blank" rel="noopener noreferrer">${portfolioData.profile.linkedinText}</a></div>
+              </div>
+            </div>
+
+            <div class="print-page-content">
+              <div class="print-project-stack"></div>
+            </div>
+          `;
+
+          return page;
+        }
+
+        function buildPrintPages() {
+          const container = document.getElementById("print-a4-pages");
+          container.innerHTML = "";
+
+          let currentPage = createPrintPage();
+          container.appendChild(currentPage);
+
+          let currentContent = currentPage.querySelector(".print-page-content");
+          let currentStack = currentPage.querySelector(".print-project-stack");
+
+          portfolioData.projects.forEach((project) => {
+            const block = createProjectBlock(project);
+            currentStack.appendChild(block);
+
+            if (currentContent.scrollHeight > currentContent.clientHeight) {
+              currentStack.removeChild(block);
+
+              currentPage = createPrintPage();
+              container.appendChild(currentPage);
+
+              currentContent = currentPage.querySelector(".print-page-content");
+              currentStack = currentPage.querySelector(".print-project-stack");
+
+              currentStack.appendChild(block);
+            }
+          });
+        }
+
+        window.addEventListener("load", async () => {
+          if (document.fonts && document.fonts.ready) {
+            await document.fonts.ready;
+          }
+          buildPrintPages();
+        });
+      </script>
+</body>
+</html>

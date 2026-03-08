@@ -1,0 +1,433 @@
+/* =========================
+   Reset / Basis
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #f3f3f3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+.logo,
+.btn {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* =========================
+   Hero / Navigation
+========================= */
+.hero {
+  background: linear-gradient(135deg, #1f3c88, #4a90e2);
+  color: white;
+  padding: 20px 40px 10px;
+}
+
+.nav {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  font-weight: 700;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.logo-name {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 14px;
+}
+
+.logo-name::after {
+  content: "";
+  position: absolute;
+  left: 1%;
+  bottom: 9px;
+  width: 85%;
+  height: 0.4rem;
+  background: white;
+  border-radius: 999px;
+}
+
+.logo-dot {
+  position: absolute;
+  right: 5px;
+  bottom: 8px;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+.page-hero-text {
+  max-width: 1000px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.page-hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1px;
+}
+
+.download-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 999px;
+  background: white;
+  color: #1f3c88;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================
+   Portfolio / A4 Ansicht
+========================= */
+.projects-page {
+  padding: 40px 0;
+  background: #f3f3f3;
+}
+
+.print-topbar {
+  width: 210mm;
+  margin: 0 auto 14px auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.print-btn {
+  border: none;
+  background: #1f3c88;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.print-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+}
+
+#print-a4-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.print-a4-page {
+  width: 210mm;
+  height: 297mm;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  page-break-after: always;
+  break-after: page;
+}
+
+.print-a4-page:last-child {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+.print-a4-header {
+  background: linear-gradient(135deg, #1f3c88, #4a90e2);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 24px;
+  padding: 6mm 8mm 6mm 8mm;
+}
+
+.print-header-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.print-header-left h1 {
+  margin: 0;
+  font-size: 35px;
+  letter-spacing: 0.5px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.print-header-left p {
+  margin: 2px 0 0 0;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.print-header-right {
+  min-width: 78mm;
+  padding-left: 18px;
+  border-left: 2px solid rgba(255, 255, 255, 0.65);
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.8;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.print-header-right a {
+  color: white;
+  text-decoration: none;
+}
+
+.print-header-right a:hover {
+  text-decoration: underline;
+}
+
+.print-page-content {
+  flex: 1;
+  padding: 5mm 5mm 5mm 5mm;
+  overflow: hidden;
+}
+
+.print-project-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.project-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  break-inside: avoid;
+}
+
+.project-title-box {
+  background: linear-gradient(135deg, #1f3c88, #4a90e2);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 10px 5px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+
+}
+
+.project-title-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-title-link:hover .project-title-box {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.14);
+}
+
+.project-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+
+}
+
+.project-image-card {
+  background: white;
+  border: 1px solid #d8e0ee;
+  border-left: 5px solid #4a90e2;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 385px;
+}
+
+.project-image-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.project-image-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* =========================
+   Footer
+========================= */
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: #222;
+  color: white;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 900px) {
+  .hero {
+    padding: 20px;
+  }
+
+  .nav {
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .nav-links {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .page-hero-text h1 {
+    font-size: 2.3rem;
+  }
+
+  .print-topbar {
+    width: auto;
+    max-width: 210mm;
+    padding: 0 12px;
+  }
+}
+
+/* =========================
+   Druckansicht
+========================= */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    background: white !important;
+  }
+
+  body {
+    padding: 0 !important;
+  }
+
+  .hero,
+  .footer,
+  .nav,
+  .page-hero-text,
+  .print-topbar {
+    display: none !important;
+  }
+
+  .projects-page {
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  #print-a4-pages {
+    gap: 0;
+  }
+
+  .print-a4-page {
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .print-a4-header {
+    background: linear-gradient(135deg, #1f3c88, #4a90e2) !important;
+  }
+
+    .project-title-box {
+    background: linear-gradient(135deg, #1f3c88, #4a90e2) !important;
+    color: white !important;
+  }
+
+  .project-image-card {
+    border-left: 5px solid #4a90e2 !important;
+  }
+
+  .print-header-left h1,
+  .print-header-left p,
+  .print-header-right,
+  .print-header-right a {
+    color: white !important;
+  }
+}
