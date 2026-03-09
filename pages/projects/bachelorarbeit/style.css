@@ -23,7 +23,6 @@ main {
   flex: 1;
 }
 
-
 h1, h2, h3, .logo, .btn {
   font-family: 'Poppins', sans-serif;
 }
@@ -31,14 +30,12 @@ h1, h2, h3, .logo, .btn {
 .hero {
   background: linear-gradient(135deg, #1f3c88, #4a90e2);
   color: white;
-  min-height: 0vh;
   padding: 20px 40px 60px;
 }
 
 .nav {
   max-width: 100%;
   margin: 0 auto;
-  padding: -10px 40px;
   display: flex;
   align-items: center;
 }
@@ -51,7 +48,7 @@ h1, h2, h3, .logo, .btn {
   padding: 0;
   margin-top: 0;
   margin-bottom: 0;
-  font-weight: 700
+  font-weight: 700;
 }
 
 .nav-links a {
@@ -61,6 +58,23 @@ h1, h2, h3, .logo, .btn {
   font-size: 1.2rem;
 }
 
+.lang-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  margin-left: 10px;
+  color: white;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.lang-btn:hover {
+  transform: translateY(-1px);
+}
 
 .logo {
   font-family: 'Poppins', sans-serif;
@@ -68,6 +82,7 @@ h1, h2, h3, .logo, .btn {
   font-weight: 700;
   color: white;
   letter-spacing: 0.03em;
+  text-decoration: none;
 }
 
 .logo-name {
@@ -104,7 +119,6 @@ h1, h2, h3, .logo, .btn {
   flex-direction: column;
   align-items: center;
   text-align: center;
-
 }
 
 .page-hero-text h1 {
@@ -118,34 +132,182 @@ h1, h2, h3, .logo, .btn {
   max-width: 700px;
 }
 
-.projects-page {
-  max-width: 1200px;
+/* Neues Layout: links TOC, rechts ein Kasten */
+.project-layout {
+  max-width: 1600px;
   margin: 60px auto;
-  padding: 0 20px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 900px) 280px;
+  gap: 32px;
+  justify-content: center;
+  align-items: start;
 }
 
-.project-card {
+.toc-sidebar {
+  position: sticky;
+  top: 100px;
+  width: 260px;
   background: white;
-  padding: 28px;
+  padding: 24px;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   border-left: 5px solid #4a90e2;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-width 0.25s ease;
-  height: 100%;
 }
 
-.project-card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+.toc-sidebar h2 {
+  font-size: 1.35rem;
+  margin-bottom: 18px;
   color: #1f3c88;
 }
 
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list li + li {
+  margin-top: 12px;
+}
+
+.toc-list a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.toc-list a:hover {
+  color: #1f3c88;
+  text-decoration: underline;
+}
+
+.project-content {
+  width: 100%;
+}
+
+.project-card {
+  margin: 0;
+  width: 100%;
+  background: white;
+  padding: 28px 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #4a90e2;
+}
+
+.toc-spacer {
+  visibility: hidden;
+}
+
+.content-section + .content-section {
+  margin-top: 32px;
+}
+
+.content-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+  color: #1f3c88;
+}
+
+.content-section p {
+  text-align: justify;
+  hyphens: auto;
+}
+
+.references-list {
+  padding-left: 22px;
+}
+
+.references-list li {
+  margin-bottom: 12px;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.references-list a {
+  color: #1f3c88;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.references-list a:hover {
+  text-decoration: underline;
+}
 
 .footer {
   text-align: center;
   padding: 30px 20px;
   background: #222;
   color: white;
-
+  margin-top: 40px;
 }
 
+/* Tablet */
+@media (max-width: 1100px) {
+  .project-layout {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .page-hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .page-hero-text p {
+    font-size: 1.25rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .hero {
+    padding: 20px 20px 40px;
+  }
+
+  .nav {
+    padding: 0;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .nav-links {
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+
+  .page-hero-text {
+    margin-top: 30px;
+  }
+
+  .page-hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .page-hero-text p {
+    font-size: 1.1rem;
+  }
+
+  .project-layout {
+    grid-template-columns: 1fr;
+    margin: 40px auto;
+    padding: 0 16px;
+  }
+
+  .toc-sidebar {
+    position: static;
+  }
+
+  .project-card {
+    padding: 22px 20px;
+  }
+
+  .content-section h2 {
+    font-size: 1.35rem;
+  }
+}

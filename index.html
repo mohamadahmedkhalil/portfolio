@@ -14,30 +14,36 @@
 <body>
   <header class="hero">
     <nav class="nav">
-        <a href="index.html" class="logo">
-          <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
-        </a>
+      <a href="index.html" class="logo">
+        <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
+      </a>
 
       <ul class="nav-links">
-        <li><a href="#about">Über mich</a></li>
-        <li><a href="pages/projects/index.html">Projekte</a></li>
-        <li><a href="#contact">Kontakt</a></li>
+        <li><a href="#about" data-i18n="navAbout">Über mich</a></li>
+        <li><a href="pages/projects/index.html" data-i18n="navProjects">Projekte</a></li>
+        <li><a href="#contact" data-i18n="navContact">Kontakt</a></li>
       </ul>
+
+      <button id="lang-toggle" class="lang-btn">EN</button>
     </nav>
 
     <div class="hero-image">
-        <img src="img/Bewerbungsfoto.png" alt="Porträt von Mohamad Khalil">
+      <img
+        src="img/Bewerbungsfoto.png"
+        alt="Porträt von Mohamad Khalil"
+        data-i18n-alt="heroImageAlt"
+      >
     </div>
 
     <div class="hero-wrapper">
       <section class="hero-content">
         <h1>Mohamad Khalil</h1>
-        <h2>Masterstudent Maschinenbau an der TU Berlin</h2>
-        <p>Schwerpunkt in Mechatronik, Mikrotechnik sowie Konstruktion und Entwicklung.</p>
+        <h2 data-i18n="heroTitle">Masterstudent Maschinenbau an der TU Berlin</h2>
+        <p data-i18n="heroSubtitle">Schwerpunkt in Mechatronik, Mikrotechnik sowie Konstruktion und Entwicklung.</p>
 
         <div class="hero-buttons">
-          <a class="btn" href="pages/portfolio/index.html">Mein Portfolio</a>
-          <a class="btn" href="https://www.linkedin.com/in/mohamadahmedkhalil/" target="_blank" rel="noopener noreferrer">Mein LinkedIn</a>
+          <a class="btn" href="pages/portfolio/index.html" data-i18n="portfolioBtn">Mein Portfolio</a>
+          <a class="btn" href="https://www.linkedin.com/in/mohamadahmedkhalil/" target="_blank" rel="noopener noreferrer" data-i18n="linkedinBtn">Mein LinkedIn</a>
         </div>
       </section>
     </div>
@@ -45,9 +51,9 @@
 
   <main>
     <section id="about" class="about">
-      <h2>Wer bin ich?</h2>
+      <h2 data-i18n="aboutHeading">Wer bin ich?</h2>
 
-      <p>
+      <p data-i18n="aboutP1">
         Ich bin Mohamad – das Kind, das in den Sommerferien immer mit seinem Vater in der
         Autowerkstatt war. Ich kann mich noch genau an den Moment erinnern, als ich zum ersten
         Mal ein Auto auf der Hebebühne gesehen habe. Dort habe ich viele komplizierte Dinge
@@ -55,7 +61,7 @@
         mich fasziniert. Genau dort hat meine Geschichte angefangen.
       </p>
 
-      <p>
+      <p data-i18n="aboutP2">
         Nachdem ich meinen Schulabschluss (Baccalauréat II) mit dem Schwerpunkt „Life Science“
         und der Note „Sehr gut“ abgeschlossen hatte, habe ich mich entschieden, nach Deutschland
         umzuziehen, um mein Traumstudium zu beginnen. Schon in den ersten Semestern habe ich
@@ -63,7 +69,7 @@
         zahlreiche Fachgebiete und eröffnet eine ganz neue Sicht auf Technik.
       </p>
 
-      <p>
+      <p data-i18n="aboutP3">
         Als ich später mit meinen Schwerpunktmodulen angefangen habe, wurden viele der Fragen,
         die ich als Kind in der Autowerkstatt gestellt hatte, Schritt für Schritt beantwortet.
         Das war für mich beeindruckend und hat meine Motivation noch weiter verstärkt. Durch
@@ -73,14 +79,14 @@
         hin zur Funktionsweise einzelner Maschinenelemente, zum Beispiel in Getrieben.
       </p>
 
-      <p>
+      <p data-i18n="aboutP4">
         Nach meinem Bachelorstudium habe ich mein Masterstudium begonnen und mich auf
         Mechatronik, Modellbildung und Simulation spezialisiert. Dabei wurde mir immer klarer,
         wie spannend es ist, technische Systeme nicht nur praktisch, sondern auch analytisch
         und mathematisch zu beschreiben, zu verstehen und weiterzuentwickeln.
       </p>
 
-      <p>
+      <p data-i18n="aboutP5">
         Neben dem Studium war es mir immer wichtig, durch studentische Tätigkeiten auch
         praktische Erfahrungen zu sammeln. So konnte ich mein theoretisches Wissen in die
         Praxis übertragen und eine neue Perspektive gewinnen. Ich hatte die Möglichkeit,
@@ -89,7 +95,7 @@
         Forschung.
       </p>
 
-      <p>
+      <p data-i18n="aboutP6">
         Heute kann ich sagen, dass mir mein Studium nicht nur Fachwissen vermittelt hat,
         sondern auch eine neue Perspektive auf Technik und Lernen gegeben hat. Genau das treibt
         mich jeden Tag an: neue Dinge zu verstehen, mit anderen darüber zu diskutieren und mein
@@ -97,112 +103,115 @@
       </p>
     </section>
 
+    <section id="journey" class="journey">
+      <h2 data-i18n="journeyHeading">Werdegang</h2>
 
-<section id="journey" class="journey">
-  <h2>Werdegang</h2>
+      <div class="journey-box">
+        <div class="journey-item">
+          <span class="schulabshluss" data-i18n="journeySchoolLabel">Schulabschluss</span>
+          <div class="journey-content">
+            <h3 data-i18n="journeySchoolTitle">Baccalauréat II – Schwerpunkt Life Science</h3>
+            <p data-i18n="journeySchoolDate">August 2018 · abgeschlossen</p>
+            <p data-i18n="journeySchoolLocation">Saida, Libanon</p>
+          </div>
+        </div>
 
-  <div class="journey-box">
-    <div class="journey-item">
-      <span class="schulabshluss">Schulabschluss</span>
-      <div class="journey-content">
-        <h3>Baccalauréat II – Schwerpunkt Life Science</h3>
-        <p>August 2018 · abgeschlossen</p>
-        <p>Saida, Libanon</p>
+        <div class="journey-item">
+          <span class="umzug" data-i18n="journeyMoveLabel">Umzug nach Deutschland</span>
+          <div class="journey-content">
+            <h3 data-i18n="journeyMoveTitle">Beginn des Studiums an der TU Berlin</h3>
+            <p data-i18n="journeyMoveText">Umzug nach Deutschland, um das Maschinenbaustudium aufzunehmen.</p>
+            <p data-i18n="journeyMoveDate">April 2022</p>
+            <p data-i18n="journeyMoveLocation">Berlin, Deutschland</p>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <span class="journey-year" data-i18n="journeyInternshipLabel">Praktikum</span>
+          <div class="journey-content">
+            <h3 data-i18n="journeyInternshipTitle">Praktikant bei der Ahlberg Metalltechnik GmbH</h3>
+            <p data-i18n="journeyInternshipDate">Feb. 2023 – März 2023 · 2 Monate</p>
+            <p data-i18n="journeyInternshipLocation">Berlin, Deutschland</p>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <span class="journey-year" data-i18n="journeyProductionLabel">Studentische Hilfskraft</span>
+          <div class="journey-content">
+            <h3 data-i18n="journeyProductionTitle">Werkstudent in der Produktion bei der Ahlberg Metalltechnik GmbH</h3>
+            <p data-i18n="journeyProductionDate">Mai 2023 – März 2024 · 11 Monate</p>
+            <p data-i18n="journeyProductionLocation">Berlin, Deutschland</p>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <span class="journey-year" data-i18n="journeyTutorLabel">Studentische Hilfskraft</span>
+          <div class="journey-content">
+            <h3 data-i18n="journeyTutorTitle">Studentische Hilfskraft mit Lehraufgaben an der TU Berlin</h3>
+            <p data-i18n="journeyTutorDate">Nov. 2023 – heute · laufend</p>
+            <p data-i18n="journeyTutorLocation">Berlin, Deutschland</p>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <span class="journey-year" data-i18n="journeyResearchBamLabel">Studentische Hilfskraft in der Forschung</span>
+          <div class="journey-content">
+            <h3 data-i18n="journeyResearchBamTitle">Studentische Hilfskraft in der Forschung bei der Bundesanstalt für Materialforschung und -prüfung</h3>
+            <p data-i18n="journeyResearchBamDate">März 2025 – Dez. 2025 · 10 Monate</p>
+            <p data-i18n="journeyResearchBamLocation">Berlin, Deutschland</p>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <span class="Bachelor" data-i18n="journeyBachelorLabel">Bachelor, B.Sc.</span>
+          <div class="journey-content">
+            <h3 data-i18n="journeyBachelorTitle">Maschinenbau, B.Sc.</h3>
+            <p data-i18n="journeyBachelorText">
+              Vertiefung in Konstruktion, Entwicklung und im technischen Verständnis
+              von Maschinen und Maschinenelementen.
+            </p>
+            <p data-i18n="journeyBachelorDate">April 2022 – Nov. 2025 · abgeschlossen</p>
+            <p data-i18n="journeyBachelorLocation">Berlin, Deutschland</p>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <span class="Master" data-i18n="journeyMasterLabel">Master, M.Sc.</span>
+          <div class="journey-content">
+            <h3 data-i18n="journeyMasterTitle">Maschinenbau, M.Sc. – Schwerpunkt Mechatronik, Modellbildung und Simulation</h3>
+            <p data-i18n="journeyMasterText">
+              Vertiefung analytischer, mathematischer und simulativer Methoden zur
+              Beschreibung und Entwicklung technischer Systeme.
+            </p>
+            <p data-i18n="journeyMasterDate">April 2025 – heute · laufend</p>
+            <p data-i18n="journeyMasterLocation">Berlin, Deutschland</p>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <span class="journey-year" data-i18n="journeyResearchTuLabel">Studentische Hilfskraft in der Forschung</span>
+          <div class="journey-content">
+            <h3 data-i18n="journeyResearchTuTitle">Studentische Hilfskraft in der Forschung an der TU Berlin</h3>
+            <p data-i18n="journeyResearchTuDate">Jan. 2026 – heute · laufend</p>
+            <p data-i18n="journeyResearchTuLocation">Berlin, Deutschland</p>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="journey-item">
-      <span class="umzug">Umzug nach Deutschland</span>
-      <div class="journey-content">
-        <h3>Beginn des Studiums an der TU Berlin</h3>
-        <p>Umzug nach Deutschland, um das Maschinenbaustudium aufzunehmen.</p>
-        <p>April 2022</p>
-        <p>Berlin, Deutschland</p>
-      </div>
-    </div>
-
-    <div class="journey-item">
-      <span class="journey-year">Praktikum</span>
-      <div class="journey-content">
-        <h3>Praktikant bei der Ahlberg Metalltechnik GmbH</h3>
-        <p>Feb. 2023 – März 2023 · 2 Monate</p>
-        <p>Berlin, Deutschland</p>
-      </div>
-    </div>
-
-    <div class="journey-item">
-      <span class="journey-year">Studentische Hilfskraft</span>
-      <div class="journey-content">
-        <h3>Werkstudent in der Produktion bei der Ahlberg Metalltechnik GmbH</h3>
-        <p>Mai 2023 – März 2024 · 11 Monate</p>
-        <p>Berlin, Deutschland</p>
-      </div>
-    </div>
-
-    <div class="journey-item">
-      <span class="journey-year">Studentische Hilfskraft</span>
-      <div class="journey-content">
-        <h3>Studentische Hilfskraft mit Lehraufgaben an der TU Berlin</h3>
-        <p>Nov. 2023 – heute · laufend</p>
-        <p>Berlin, Deutschland</p>
-      </div>
-    </div>
-
-    <div class="journey-item">
-      <span class="journey-year">Studentische Hilfskraft in der Forschung</span>
-      <div class="journey-content">
-        <h3>Studentische Hilfskraft in der Forschung bei der Bundesanstalt für Materialforschung und -prüfung</h3>
-        <p>März 2025 – Dez. 2025 · 10 Monate</p>
-        <p>Berlin, Deutschland</p>
-      </div>
-    </div>
-
-    <div class="journey-item">
-      <span class="Bachelor">Bachelor, B.Sc.</span>
-      <div class="journey-content">
-        <h3>Maschinenbau, B.Sc.</h3>
-        <p>
-          Vertiefung in Konstruktion, Entwicklung und im technischen Verständnis
-          von Maschinen und Maschinenelementen.
-        </p>
-        <p>April 2022 – Nov. 2025 · abgeschlossen</p>
-        <p>Berlin, Deutschland</p>
-      </div>
-    </div>
-
-    <div class="journey-item">
-      <span class="Master">Master, M.Sc.</span>
-      <div class="journey-content">
-        <h3>Maschinenbau, M.Sc. – Schwerpunkt Mechatronik, Modellbildung und Simulation</h3>
-        <p>
-          Vertiefung analytischer, mathematischer und simulativer Methoden zur
-          Beschreibung und Entwicklung technischer Systeme.
-        </p>
-        <p>April 2025 – heute · laufend</p>
-        <p>Berlin, Deutschland</p>
-      </div>
-    </div>
-
-    <div class="journey-item">
-      <span class="journey-year">Studentische Hilfskraft in der Forschung</span>
-      <div class="journey-content">
-        <h3>Studentische Hilfskraft in der Forschung an der TU Berlin</h3>
-        <p>Jan. 2026 – heute · laufend</p>
-        <p>Berlin, Deutschland</p>
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <section id="contact" class="contact">
-      <h2>Kontakt</h2>
-      <p>E-Mail: <a href="mailto:mohamadahmedkhalil@gmail.com">mohamadahmedkhalil@gmail.com</a></p>
+      <h2 data-i18n="contactHeading">Kontakt</h2>
+      <p>
+        <span data-i18n="emailLabel">E-Mail:</span>
+        <a href="mailto:mohamadahmedkhalil@gmail.com">mohamadahmedkhalil@gmail.com</a>
+      </p>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© 2026 Mohamad Khalil</p>
+    <p data-i18n="footerText">© 2026 Mohamad Khalil</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

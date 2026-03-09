@@ -4,51 +4,131 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projekte | Mohamad Khalil</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="img/Bewerbungsfoto.png">
+  <link rel="icon" type="image/png" href="../../../img/Bewerbungsfoto.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="hero">
     <nav class="nav">
-        <a href="../../../index.html" class="logo">
-          <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
-        </a>
+      <a href="../../../index.html" class="logo">
+        <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
+      </a>
 
       <ul class="nav-links">
-        <li><a href="../../../index.html#about">Über mich</a></li>
-        <li><a href="../index.html">Projekte</a></li>
-        <li><a href="../../../index.html#contact">Kontakt</a></li>
+        <li><a href="../../../index.html#about" data-i18n="navAbout">Über mich</a></li>
+        <li><a href="../index.html" data-i18n="navProjects">Projekte</a></li>
+        <li><a href="../../../index.html#contact" data-i18n="navContact">Kontakt</a></li>
       </ul>
+
+      <button id="lang-toggle" class="lang-btn">EN</button>
     </nav>
 
     <div class="page-hero-text">
-      <h1>Bachelorarbeit</h1>
-      <p>Konstruktion und Aufbau eines Baggerarms inklusive mathematischer Beschreibung des Aufbaus zum Einsatz in der Lehre.</p>
+      <h1 data-i18n="pageHeading">Bachelorarbeit</h1>
+      <p data-i18n="pageSubtitle">
+        Konstruktion und Aufbau eines Baggerarms inklusive mathematischer Beschreibung des Aufbaus zum Einsatz in der Lehre.
+      </p>
     </div>
   </header>
 
-  <main class="projects-page">
-    <section class="projects-grid">
+  <main class="project-layout">
+    <aside class="toc-sidebar">
+      <h2 data-i18n="tocHeading">Inhaltsverzeichnis</h2>
+      <ul class="toc-list">
+        <li><a href="#overview" data-i18n="tocOverview">Überblick</a></li>
+        <li><a href="#task" data-i18n="tocTask">Aufgabenstellung</a></li>
+        <li><a href="#implementation" data-i18n="tocImplementation">Umsetzung</a></li>
+        <li><a href="#results" data-i18n="tocResults">Ergebnisse</a></li>
+        <li><a href="#references" data-i18n="tocReferences">Literaturverzeichnis</a></li>
+      </ul>
+    </aside>
 
-     
-        <article class="project-card">
-            <h2>Projekt 1</h2>
-            <p>            Kurze Beschreibung des Projekts. Zum Beispiel: FEM-Simulation, Ziel des Projekts,
-            verwendete Software und wichtigste Ergebnisse.
-            </p>
-        </article>
-     
+    <section class="project-content">
+      <article class="project-card">
+        <section id="overview" class="content-section">
+          <h2 data-i18n="overviewHeading">Überblick</h2>
+          <p data-i18n="overviewText">
+            In dieser Bachelorarbeit wurde ein Baggerarm konstruiert und aufgebaut. Zusätzlich wurde
+            der Aufbau mathematisch beschrieben, um ihn gezielt in der Lehre einsetzen zu können.
+          </p>
+        </section>
 
-      
+        <section id="task" class="content-section">
+          <h2 data-i18n="taskHeading">Aufgabenstellung</h2>
+          <p data-i18n="taskText">
+            Ziel war die Entwicklung eines funktionsfähigen Demonstrators, der sowohl die mechanische
+            Konstruktion als auch die theoretische Beschreibung des Systems verständlich vermittelt.
+          </p>
+        </section>
+
+        <section id="implementation" class="content-section">
+          <h2 data-i18n="implementationHeading">Umsetzung</h2>
+          <p data-i18n="implementationText">
+            Die Umsetzung umfasste die Konstruktion des Baggerarms, den praktischen Aufbau sowie die
+            mathematische Modellierung der Kinematik und relevanter Zusammenhänge.
+          </p>
+        </section>
+
+        <section id="results" class="content-section">
+          <h2 data-i18n="resultsHeading">Ergebnisse</h2>
+          <p data-i18n="resultsText">
+            Das Ergebnis ist ein anschauliches Lehrsystem, das technische und mathematische Inhalte
+            miteinander verbindet und für den Einsatz in der Ausbildung geeignet ist.
+          </p>
+        </section>
+
+        <section id="results" class="content-section">
+          <h2 data-i18n="resultsHeading">Ergebnisse</h2>
+          <p data-i18n="resultsText">
+            Das Ergebnis ist ein anschauliches Lehrsystem, das technische und mathematische Inhalte
+            miteinander verbindet und für den Einsatz in der Ausbildung geeignet ist.
+          </p>
+        </section>
+
+
+        <section id="results" class="content-section">
+          <h2 data-i18n="resultsHeading">Ergebnisse</h2>
+          <p data-i18n="resultsText">
+            Das Ergebnis ist ein anschauliches Lehrsystem, das technische und mathematische Inhalte
+            miteinander verbindet und für den Einsatz in der Ausbildung geeignet ist.
+          </p>
+        </section>
+
+
+        <section id="results" class="content-section">
+          <h2 data-i18n="resultsHeading">Ergebnisse</h2>
+          <p data-i18n="resultsText">
+            Das Ergebnis ist ein anschauliches Lehrsystem, das technische und mathematische Inhalte
+            miteinander verbindet und für den Einsatz in der Ausbildung geeignet ist.
+          </p>
+        </section>
+
+        <section id="references" class="content-section">
+          <h2 data-i18n="referencesHeading">Literaturverzeichnis</h2>
+          <ol class="references-list">
+            <li>
+              Beispielquelle 1 –
+              <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
+            </li>
+            <li>
+              Beispielquelle 2 –
+              <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
+            </li>
+          </ol>
+        </section>
+      </article>
     </section>
+
+    <div class="toc-spacer" aria-hidden="true"></div>
   </main>
 
-    <footer class="footer">
-        <p>© 2026 Mohamad Khalil</p>
-    </footer>
+  <footer class="footer">
+    <p data-i18n="footerText">© 2026 Mohamad Khalil</p>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

@@ -4,51 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projekte | Mohamad Khalil</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="img/Bewerbungsfoto.png">
+  <link rel="icon" type="image/png" href="../../../img/Bewerbungsfoto.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="hero">
     <nav class="nav">
-        <a href="../../../index.html" class="logo">
-          <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
-        </a>
+      <a href="../../../index.html" class="logo">
+        <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
+      </a>
 
       <ul class="nav-links">
-        <li><a href="../../../index.html#about">Über mich</a></li>
-        <li><a href="../index.html">Projekte</a></li>
-        <li><a href="../../../index.html#contact">Kontakt</a></li>
+        <li><a href="../../../index.html#about" data-i18n="navAbout">Über mich</a></li>
+        <li><a href="../index.html" data-i18n="navProjects">Projekte</a></li>
+        <li><a href="../../../index.html#contact" data-i18n="navContact">Kontakt</a></li>
       </ul>
+
+      <button id="lang-toggle" class="lang-btn">EN</button>
     </nav>
 
     <div class="page-hero-text">
-      <h1>Projekt Aktorik und Sensorik</h1>
-      <p>Entwurf und Implementierung eines bistabilen DE-Aktors mit integrierter Seilkinematik.</p>
+      <h1 data-i18n="pageHeading">Projekt Aktorik und Sensorik</h1>
+      <p data-i18n="pageSubtitle">Entwurf und Implementierung eines bistabilen DE-Aktors mit integrierter Seilkinematik.</p>
     </div>
   </header>
 
   <main class="projects-page">
     <section class="projects-grid">
-
-     
-        <article class="project-card">
-            <h2>Projekt 1</h2>
-            <p>            Kurze Beschreibung des Projekts. Zum Beispiel: FEM-Simulation, Ziel des Projekts,
-            verwendete Software und wichtigste Ergebnisse.
-            </p>
-        </article>
-     
-
-      
+      <article class="project-card">
+        <h2 data-i18n="cardTitle">Projekt 1</h2>
+        <p data-i18n="cardDescription">
+          Kurze Beschreibung des Projekts. Zum Beispiel: FEM-Simulation, Ziel des Projekts,
+          verwendete Software und wichtigste Ergebnisse.
+        </p>
+      </article>
     </section>
   </main>
 
-    <footer class="footer">
-        <p>© 2026 Mohamad Khalil</p>
-    </footer>
+  <footer class="footer">
+    <p data-i18n="footerText">© 2026 Mohamad Khalil</p>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

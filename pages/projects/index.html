@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projekte | Mohamad Khalil</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="img/Bewerbungsfoto.png">
   <link rel="stylesheet" href="style.css">
@@ -13,20 +14,22 @@
 
   <header class="hero">
     <nav class="nav">
-        <a href="../../index.html" class="logo">
-          <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
-        </a>
+      <a href="../../index.html" class="logo">
+        <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
+      </a>
 
       <ul class="nav-links">
-        <li><a href="../../index.html#about">Über mich</a></li>
-        <li><a href="index.html">Projekte</a></li>
-        <li><a href="../../index.html#contact">Kontakt</a></li>
+        <li><a href="../../index.html#about" data-i18n="navAbout">Über mich</a></li>
+        <li><a href="index.html" data-i18n="navProjects">Projekte</a></li>
+        <li><a href="../../index.html#contact" data-i18n="navContact">Kontakt</a></li>
       </ul>
+
+      <button id="lang-toggle" class="lang-btn">EN</button>
     </nav>
 
     <div class="page-hero-text">
-      <h1>Meine Projekte</h1>
-      <p>Hier findest du eine Auswahl meiner technischen und akademischen Projekte.</p>
+      <h1 data-i18n="pageHeading">Meine Projekte</h1>
+      <p data-i18n="pageSubtitle">Hier findest du eine Auswahl meiner technischen und akademischen Projekte.</p>
     </div>
   </header>
 
@@ -35,66 +38,67 @@
 
       <a href="bachelorarbeit/index.html" class="project-link">
         <article class="project-card">
-            <h2>Bachelorarbeit</h2>
-            <p>
-                Konstruktion und Aufbau eines Baggerarms
-                inklusive mathematischer Beschreibung des
-                Aufbaus zum Einsatz in der Lehre.
-            </p>
+          <h2 data-i18n="project1Title">Bachelorarbeit</h2>
+          <p data-i18n="project1Desc">
+            Konstruktion und Aufbau eines Baggerarms
+            inklusive mathematischer Beschreibung des
+            Aufbaus zum Einsatz in der Lehre.
+          </p>
         </article>
       </a>
 
-     <a href="mehrkoerperdynamik/index.html" class="project-link">
+      <a href="mehrkoerperdynamik/index.html" class="project-link">
         <article class="project-card">
-            <h2>Projekt Mehrkörperdynamik</h2>
-            <p>
-             Mehrkörperdynamische Fahrwerk-Simulation eines Motocross-Motorrads.
-            </p>
+          <h2 data-i18n="project2Title">Projekt Mehrkörperdynamik</h2>
+          <p data-i18n="project2Desc">
+            Mehrkörperdynamische Fahrwerk-Simulation eines Motocross-Motorrads.
+          </p>
         </article>
-     </a>
+      </a>
 
       <a href="Projekt Medizintechnik/index.html" class="project-link">
         <article class="project-card">
-            <h2>Projekt Medizintechnik</h2>
-            <p>
-                Sensorentwicklung zur differenzierten Vitalparametererfassung.
-            </p>
+          <h2 data-i18n="project3Title">Projekt Medizintechnik</h2>
+          <p data-i18n="project3Desc">
+            Sensorentwicklung zur differenzierten Vitalparametererfassung.
+          </p>
         </article>
-    </a>    
+      </a>
 
       <a href="projekt Aktorik und Mechatronik/index.html" class="project-link">
         <article class="project-card">
-            <h2>Projekt Aktorik und Sensorik</h2>
-            <p>
+          <h2 data-i18n="project4Title">Projekt Aktorik und Sensorik</h2>
+          <p data-i18n="project4Desc">
             Entwurf und Implementierung eines bistabilen DE-Aktors mit integrierter Seilkinematik.
-            </p>
+          </p>
         </article>
       </a>
 
       <a href="projekt Funktionseinheit der Mikrotechnik/index.html" class="project-link">
         <article class="project-card">
-            <h2>Projekt Funktionseinheit der Mikrotechnik</h2>
-            <p>
-                Entwicklung eines Micro-Opto-Elektro-Mechanical Systems zur Identifikation und Sortierung von Kunststoffen.
-            </p>
+          <h2 data-i18n="project5Title">Projekt Funktionseinheit der Mikrotechnik</h2>
+          <p data-i18n="project5Desc">
+            Entwicklung eines Micro-Opto-Elektro-Mechanical Systems zur Identifikation und Sortierung von Kunststoffen.
+          </p>
         </article>
       </a>
 
       <a href="projekt Smart Materials Mechatronics/index.html" class="project-link">
         <article class="project-card">
-            <h2>Projekt Smart Materials Mechatronics</h2>
-            <p>
-                Untersuchung dielektrisches Material bezüglich komplexem Schubmoduls und Wämemebehandlung.
-            </p>
+          <h2 data-i18n="project6Title">Projekt Smart Materials Mechatronics</h2>
+          <p data-i18n="project6Desc">
+            Untersuchung dielektrisches Material bezüglich komplexem Schubmoduls und Wämemebehandlung.
+          </p>
         </article>
       </a>
-      
+
     </section>
   </main>
 
-    <footer class="footer">
-        <p>© 2026 Mohamad Khalil</p>
-    </footer>
+  <footer class="footer">
+    <p data-i18n="footerText">© 2026 Mohamad Khalil</p>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

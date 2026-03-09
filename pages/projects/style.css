@@ -61,6 +61,22 @@ h1, h2, h3, .logo, .btn {
   font-size: 1.2rem;
 }
 
+.lang-btn {
+  background: transparent;
+  border: 1px transparent;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  margin-left: 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.lang-btn:hover {
+  transform: translateY(-1px);
+}
 
 .logo {
   font-family: 'Poppins', sans-serif;
