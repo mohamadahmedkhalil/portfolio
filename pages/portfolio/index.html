@@ -18,15 +18,17 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="../../index.html#about">Über mich</a></li>
-        <li><a href="../projects/index.html">Projekte</a></li>
-        <li><a href="../../index.html#contact">Kontakt</a></li>
+        <li><a href="../../index.html#about" data-i18n="navAbout">Über mich</a></li>
+        <li><a href="../projects/index.html" data-i18n="navProjects">Projekte</a></li>
+        <li><a href="../../index.html#contact" data-i18n="navContact">Kontakt</a></li>
       </ul>
+
+      <button id="lang-toggle" class="lang-btn">EN</button>
     </nav>
 
     <div class="page-hero-text">
-      <h1>Mein Portfolio</h1>
-      <button class="btn download-btn" onclick="window.print()">
+      <h1 data-i18n="pageHeading">Mein Portfolio</h1>
+      <button class="btn download-btn" onclick="window.print()" data-i18n="downloadBtn">
         Portfolio als PDF speichern
       </button>
     </div>
@@ -37,104 +39,166 @@
   </main>
 
   <footer class="footer">
-    <p>© 2026 Mohamad Khalil</p>
+    <p data-i18n="footerText">© 2026 Mohamad Khalil</p>
   </footer>
 
-      <script src="projects-data.js"></script>
-      <script src="projects-data.js"></script>
-      <script>
-        function createImageCard(item) {
-          const card = document.createElement("div");
-          card.className = "project-image-card";
+  <script src="projects-data.js"></script>
+  <script>
+    const uiTranslations = {
+      de: {
+        pageTitle: "Mein Portfolio",
+        navAbout: "Über mich",
+        navProjects: "Projekte",
+        navContact: "Kontakt",
+        pageHeading: "Mein Portfolio",
+        downloadBtn: "Portfolio als PDF speichern",
+        footerText: "© 2026 Mohamad Khalil",
+        emailLabel: "E-Mail:",
+        phoneLabel: "Telefon:",
+        linkedinLabel: "LinkedIn:"
+      },
+      en: {
+        pageTitle: "My Portfolio",
+        navAbout: "About Me",
+        navProjects: "Projects",
+        navContact: "Contact",
+        pageHeading: "My Portfolio",
+        downloadBtn: "Save Portfolio as PDF",
+        footerText: "© 2026 Mohamad Khalil",
+        emailLabel: "Email:",
+        phoneLabel: "Phone:",
+        linkedinLabel: "LinkedIn:"
+      }
+    };
 
-          card.innerHTML = `
-            <img src="${item.image}" alt="${item.alt}">
-            <p>${item.text}</p>
-          `;
+    let currentLang = localStorage.getItem("language") || "de";
 
-          return card;
-        }
+    function createImageCard(item, lang) {
+      const card = document.createElement("div");
+      card.className = "project-image-card";
 
-        function createProjectBlock(project) {
-          const block = document.createElement("section");
-          block.className = "project-detail";
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.alt[lang]}">
+        <p>${item.text[lang]}</p>
+      `;
 
-          block.innerHTML = `
-            <a class="project-title-link" href="${project.link}">
-              <div class="project-title-box">${project.title}</div>
-            </a>
-            <div class="project-image-grid"></div>
-          `;
+      return card;
+    }
 
-          const grid = block.querySelector(".project-image-grid");
+    function createProjectBlock(project, lang) {
+      const block = document.createElement("section");
+      block.className = "project-detail";
 
-          project.items.forEach((item) => {
-            grid.appendChild(createImageCard(item));
-          });
+      block.innerHTML = `
+        <a class="project-title-link" href="${project.link}">
+          <div class="project-title-box">${project.title[lang]}</div>
+        </a>
+        <div class="project-image-grid"></div>
+      `;
 
-          return block;
-        }
+      const grid = block.querySelector(".project-image-grid");
 
-        function createPrintPage() {
-          const page = document.createElement("section");
-          page.className = "print-a4-page";
+      project.items.forEach((item) => {
+        grid.appendChild(createImageCard(item, lang));
+      });
 
-          page.innerHTML = `
-            <div class="print-a4-header">
-              <div class="print-header-left">
-                <h1>${portfolioData.profile.name}</h1>
-                <p>${portfolioData.profile.title}</p>
-              </div>
+      return block;
+    }
 
-              <div class="print-header-right">
-                <div><strong>E-Mail:</strong> ${portfolioData.profile.email}</div>
-                <div><strong>Telefon:</strong> ${portfolioData.profile.phone}</div>
-                <div><strong>LinkedIn:</strong> <a href="${portfolioData.profile.linkedinUrl}" target="_blank" rel="noopener noreferrer">${portfolioData.profile.linkedinText}</a></div>
-              </div>
-            </div>
+    function createPrintPage(lang) {
+      const page = document.createElement("section");
+      page.className = "print-a4-page";
 
-            <div class="print-page-content">
-              <div class="print-project-stack"></div>
-            </div>
-          `;
+      page.innerHTML = `
+        <div class="print-a4-header">
+          <div class="print-header-left">
+            <h1>${portfolioData.profile.name}</h1>
+            <p>${portfolioData.profile.title[lang]}</p>
+          </div>
 
-          return page;
-        }
+          <div class="print-header-right">
+            <div><strong>${uiTranslations[lang].emailLabel}</strong> ${portfolioData.profile.email}</div>
+            <div><strong>${uiTranslations[lang].phoneLabel}</strong> ${portfolioData.profile.phone}</div>
+            <div><strong>${uiTranslations[lang].linkedinLabel}</strong> <a href="${portfolioData.profile.linkedinUrl}" target="_blank" rel="noopener noreferrer">${portfolioData.profile.linkedinText}</a></div>
+          </div>
+        </div>
 
-        function buildPrintPages() {
-          const container = document.getElementById("print-a4-pages");
-          container.innerHTML = "";
+        <div class="print-page-content">
+          <div class="print-project-stack"></div>
+        </div>
+      `;
 
-          let currentPage = createPrintPage();
+      return page;
+    }
+
+    function buildPrintPages(lang) {
+      const container = document.getElementById("print-a4-pages");
+      container.innerHTML = "";
+
+      let currentPage = createPrintPage(lang);
+      container.appendChild(currentPage);
+
+      let currentContent = currentPage.querySelector(".print-page-content");
+      let currentStack = currentPage.querySelector(".print-project-stack");
+
+      portfolioData.projects.forEach((project) => {
+        const block = createProjectBlock(project, lang);
+        currentStack.appendChild(block);
+
+        if (currentContent.scrollHeight > currentContent.clientHeight) {
+          currentStack.removeChild(block);
+
+          currentPage = createPrintPage(lang);
           container.appendChild(currentPage);
 
-          let currentContent = currentPage.querySelector(".print-page-content");
-          let currentStack = currentPage.querySelector(".print-project-stack");
+          currentContent = currentPage.querySelector(".print-page-content");
+          currentStack = currentPage.querySelector(".print-project-stack");
 
-          portfolioData.projects.forEach((project) => {
-            const block = createProjectBlock(project);
-            currentStack.appendChild(block);
-
-            if (currentContent.scrollHeight > currentContent.clientHeight) {
-              currentStack.removeChild(block);
-
-              currentPage = createPrintPage();
-              container.appendChild(currentPage);
-
-              currentContent = currentPage.querySelector(".print-page-content");
-              currentStack = currentPage.querySelector(".print-project-stack");
-
-              currentStack.appendChild(block);
-            }
-          });
+          currentStack.appendChild(block);
         }
+      });
+    }
 
-        window.addEventListener("load", async () => {
+    function applyLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.title = uiTranslations[lang].pageTitle;
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (uiTranslations[lang][key]) {
+          element.textContent = uiTranslations[lang][key];
+        }
+      });
+
+      const toggleBtn = document.getElementById("lang-toggle");
+      if (toggleBtn) {
+        toggleBtn.textContent = lang === "de" ? "EN" : "DE";
+      }
+
+      localStorage.setItem("language", lang);
+      buildPrintPages(lang);
+    }
+
+    window.addEventListener("load", async () => {
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+
+      applyLanguage(currentLang);
+
+      const toggleBtn = document.getElementById("lang-toggle");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", async () => {
+          currentLang = currentLang === "de" ? "en" : "de";
+
           if (document.fonts && document.fonts.ready) {
             await document.fonts.ready;
           }
-          buildPrintPages();
+
+          applyLanguage(currentLang);
         });
-      </script>
+      }
+    });
+  </script>
 </body>
 </html>
