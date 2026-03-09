@@ -26,6 +26,11 @@ main {
   flex: 1;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 h1,
 h2,
 h3,
@@ -40,50 +45,21 @@ h3,
 .hero {
   background: linear-gradient(135deg, #1f3c88, #4a90e2);
   color: white;
-  padding: 20px 40px 10px;
+  min-height: 0vh;
+  padding: 20px 40px 60px;
 }
 
 .nav {
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 0px;
+  padding: 0;
   display: flex;
   align-items: center;
-}
-
-.nav-links {
-  margin-left: auto;
-  display: flex;
-  gap: 36px;
-  list-style: none;
-  font-weight: 700;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-size: 1.2rem;
-}
-
-.lang-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  padding: 8px 10px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 600;
-  margin-left: 10px;
-  color: white;
-  font-size: 18px;
-}
-
-.lang-btn:hover {
-  transform: translateY(-1px);
+  position: relative;
 }
 
 .logo {
+  font-family: 'Poppins', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: white;
@@ -116,6 +92,71 @@ h3,
   height: 8px;
   background: white;
   border-radius: 50%;
+}
+
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px transparent;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  margin-left: 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.lang-btn:hover {
+  transform: translateY(-1px);
+}
+
+.menu-toggle {
+  display: none;
+  background: rgba(34, 47, 68, 0.95);
+  border: none;
+  border-radius: 14px;
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #5f6977;
+  border-radius: 999px;
 }
 
 .page-hero-text {
@@ -162,14 +203,6 @@ h3,
   background: #f3f3f3;
 }
 
-.print-topbar {
-  width: 210mm;
-  margin: 0 auto 14px auto;
-  display: flex;
-  justify-content: flex-end;
-}
-
-
 #print-a4-pages {
   display: flex;
   flex-direction: column;
@@ -201,7 +234,7 @@ h3,
   justify-content: space-between;
   align-items: stretch;
   gap: 2px;
-  padding: 1mm 1mm 1mm 1mm;
+  padding: 1mm;
 }
 
 .print-header-left {
@@ -249,7 +282,7 @@ h3,
 
 .print-page-content {
   flex: 1;
-  padding: 5mm 5mm 5mm 5mm;
+  padding: 5mm;
   overflow: hidden;
 }
 
@@ -266,6 +299,12 @@ h3,
   break-inside: avoid;
 }
 
+.project-title-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .project-title-box {
   background: linear-gradient(135deg, #1f3c88, #4a90e2);
   color: white;
@@ -276,13 +315,6 @@ h3,
   padding: 10px 5px;
   border-radius: 14px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
-
-}
-
-.project-title-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
 }
 
 .project-title-link:hover .project-title-box {
@@ -295,7 +327,6 @@ h3,
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   align-items: start;
-
 }
 
 .project-image-card {
@@ -316,7 +347,6 @@ h3,
   height: 170px;
   object-fit: cover;
   border-radius: 10px;
-  display: block;
 }
 
 .project-image-card p {
@@ -336,33 +366,167 @@ h3,
 }
 
 /* =========================
-   Responsive
+   Tablet
 ========================= */
 @media (max-width: 900px) {
   .hero {
     padding: 20px;
   }
 
-  .nav {
-    padding: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
   .nav-links {
     gap: 20px;
-    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-size: 1.05rem;
   }
 
   .page-hero-text h1 {
     font-size: 2.3rem;
   }
+}
 
-  .print-topbar {
-    width: auto;
+/* =========================
+   Mobile Menü
+========================= */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    padding: 18px 16px 40px;
+    min-height: auto;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .nav {
+    width: 100%;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    right: 16px;
+    width: 220px;
+    background: rgba(34, 47, 68, 0.98);
+    border-radius: 16px;
+    padding: 14px;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    margin-left: 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    color: white;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+  }
+
+  .lang-btn {
+    font-size: 16px;
+  }
+
+  .page-hero-text {
+    margin: 28px auto 0;
+    padding: 0 10px;
+  }
+
+  .page-hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .download-btn {
+    font-size: 0.95rem;
+    padding: 12px 20px;
+  }
+}
+
+/* =========================
+   A4 Bildschirmansicht mobil
+========================= */
+@media screen and (max-width: 900px) {
+  .projects-page {
+    padding: 20px 12px;
+  }
+
+  #print-a4-pages {
+    gap: 18px;
+  }
+
+  .print-a4-page {
+    width: 100%;
     max-width: 210mm;
-    padding: 0 12px;
+    height: auto;
+    min-height: 297mm;
+  }
+
+  .print-a4-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .print-header-left {
+    margin-top: 0;
+  }
+
+  .print-header-left h1 {
+    font-size: 2rem;
+  }
+
+  .print-header-left p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .print-header-right {
+    min-width: 0;
+    width: 100%;
+    padding-left: 0;
+    border-left: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.65);
+    padding-top: 10px;
+    font-size: 0.95rem;
+  }
+
+  .print-page-content {
+    padding: 14px;
+  }
+
+  .project-image-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .project-image-card {
+    min-height: auto;
+  }
+
+  .project-image-card img {
+    height: auto;
+    max-height: 220px;
   }
 }
 
@@ -392,8 +556,7 @@ h3,
   .hero,
   .footer,
   .nav,
-  .page-hero-text,
-  .print-topbar {
+  .page-hero-text {
     display: none !important;
   }
 
@@ -409,13 +572,15 @@ h3,
   .print-a4-page {
     box-shadow: none;
     margin: 0;
+    width: 210mm;
+    height: 297mm;
   }
 
   .print-a4-header {
     background: linear-gradient(135deg, #1f3c88, #4a90e2) !important;
   }
 
-    .project-title-box {
+  .project-title-box {
     background: linear-gradient(135deg, #1f3c88, #4a90e2) !important;
     color: white !important;
   }

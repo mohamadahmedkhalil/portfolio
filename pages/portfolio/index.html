@@ -23,6 +23,12 @@
         <li><a href="../../index.html#contact" data-i18n="navContact">Kontakt</a></li>
       </ul>
 
+      <button class="menu-toggle" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <button id="lang-toggle" class="lang-btn">EN</button>
     </nav>
 
@@ -180,6 +186,21 @@
     }
 
     window.addEventListener("load", async () => {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+          });
+        });
+      }
+
       if (document.fonts && document.fonts.ready) {
         await document.fonts.ready;
       }
