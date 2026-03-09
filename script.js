@@ -154,6 +154,24 @@ const translations = {
 
 let currentLang = localStorage.getItem("language") || "de";
 
+function updateDownloadLink(lang) {
+  const downloadLink = document.getElementById("portfolio-download");
+  if (!downloadLink) return;
+
+  if (lang === "de") {
+    downloadLink.href = "portfolio/DE/portfolio_pdflatex.pdf";
+  } else {
+    downloadLink.href = "portfolio/EN/portfolio_pdflatex.pdf";
+  }
+}
+
+function updateLanguageToggle(lang) {
+  const toggleBtn = document.getElementById("lang-toggle");
+  if (!toggleBtn) return;
+
+  toggleBtn.textContent = lang === "de" ? "EN" : "DE";
+}
+
 function applyLanguage(lang) {
   document.documentElement.lang = lang;
   document.title = translations[lang].pageTitle;
@@ -172,22 +190,42 @@ function applyLanguage(lang) {
     }
   });
 
-  const toggleBtn = document.getElementById("lang-toggle");
-  if (toggleBtn) {
-    toggleBtn.textContent = lang === "de" ? "EN" : "DE";
-  }
+  updateLanguageToggle(lang);
+  updateDownloadLink(lang);
 
   localStorage.setItem("language", lang);
 }
 
+function setupLanguageToggle() {
+  const toggleBtn = document.getElementById("lang-toggle");
+  if (!toggleBtn) return;
+
+  toggleBtn.addEventListener("click", () => {
+    currentLang = currentLang === "de" ? "en" : "de";
+    applyLanguage(currentLang);
+  });
+}
+
+function setupMobileMenu() {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  if (!menuToggle || !navLinks) return;
+
+  menuToggle.addEventListener("click", () => {
+    const isActive = navLinks.classList.toggle("active");
+    menuToggle.setAttribute("aria-expanded", String(isActive));
+  });
+
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   applyLanguage(currentLang);
-
-  const toggleBtn = document.getElementById("lang-toggle");
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      currentLang = currentLang === "de" ? "en" : "de";
-      applyLanguage(currentLang);
-    });
-  }
+  setupLanguageToggle();
+  setupMobileMenu();
 });

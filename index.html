@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="img/Bewerbungsfoto.png">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header class="hero">
@@ -18,7 +19,7 @@
         <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
       </a>
 
-      <button class="menu-toggle" aria-label="Menü öffnen">
+      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -30,7 +31,7 @@
         <li><a href="#contact" data-i18n="navContact">Kontakt</a></li>
       </ul>
 
-      <button id="lang-toggle" class="lang-btn">EN</button>
+      <button id="lang-toggle" class="lang-btn" type="button">EN</button>
     </nav>
 
     <div class="hero-image">
@@ -45,11 +46,30 @@
       <section class="hero-content">
         <h1>Mohamad Khalil</h1>
         <h2 data-i18n="heroTitle">Masterstudent Maschinenbau an der TU Berlin</h2>
-        <p data-i18n="heroSubtitle">Schwerpunkt in Mechatronik, Mikrotechnik sowie Konstruktion und Entwicklung.</p>
+        <p data-i18n="heroSubtitle">
+          Schwerpunkt in Mechatronik, Mikrotechnik sowie Konstruktion und Entwicklung.
+        </p>
 
         <div class="hero-buttons">
-          <a class="btn" href="" data-i18n="portfolioBtn">Mein Portfolio</a>
-          <a class="btn" href="https://www.linkedin.com/in/mohamadahmedkhalil/" target="_blank" rel="noopener noreferrer" data-i18n="linkedinBtn">Mein LinkedIn</a>
+          <a
+            class="btn download-btn"
+            id="portfolio-download"
+            href="portfolio/DE/portfolio_pdflatex.pdf"
+            download
+            data-i18n="portfolioBtn"
+          >
+            Portfolio als PDF herunterladen
+          </a>
+
+          <a
+            class="btn"
+            href="https://www.linkedin.com/in/mohamadahmedkhalil/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="linkedinBtn"
+          >
+            Mein LinkedIn
+          </a>
         </div>
       </section>
     </div>
@@ -217,15 +237,5 @@
   <footer class="footer">
     <p data-i18n="footerText">© 2026 Mohamad Khalil</p>
   </footer>
-
-  <script src="script.js"></script>
-  <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
 </body>
 </html>

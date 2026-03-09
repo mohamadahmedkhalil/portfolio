@@ -1,0 +1,182 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[scaled=0.97]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[a4paper,margin=0mm]{geometry}
+\usepackage{microtype}
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=blueDark,
+  linkcolor=blueDark,
+  pdfauthor={Mohamad Khalil},
+  pdftitle={Portfolio}
+}
+
+\definecolor{blueDark}{HTML}{1F3C88}
+\definecolor{blueLight}{HTML}{4A90E2}
+\definecolor{pageBg}{HTML}{F3F3F3}
+\definecolor{cardBorder}{HTML}{D8E0EE}
+\definecolor{textDark}{HTML}{222222}
+\definecolor{textMuted}{HTML}{4A5568}
+\definecolor{imgBg}{HTML}{E9EEF6}
+
+\pagecolor{pageBg}
+\color{textDark}
+
+\newcommand{\PortfolioHeader}{%
+	\begin{tcolorbox}[
+		enhanced,
+		arc=0mm,
+		boxrule=0pt,
+		colback=blueDark,
+		colupper=white,
+		left=1mm,right=1mm,top=1mm,bottom=1mm,
+		width=\textwidth,
+		enlarge left by=0mm,
+		before skip=0mm,
+		after skip=5mm
+		]
+		\begin{minipage}[c]{0.56\textwidth}
+			{\fontsize{36}{38}\selectfont\bfseries MOHAMAD KHALIL\par}
+			\vspace{1.5mm}
+			{\large Maschinenbau Student an der TU Berlin\par}
+		\end{minipage}
+        \hspace{1mm}
+		\begin{minipage}[c][20mm][c]{0.02\textwidth}
+			\centering
+			{\color{white}\rule{0.5pt}{20mm}}
+		\end{minipage}
+        \hspace{1mm}
+		\begin{minipage}[c][20mm][c]{0.34\textwidth}
+			\raggedright
+			\small
+			\textbf{E-Mail:} mohamadahmedkhalil@gmail.com\\[1mm]
+			\textbf{Telefon:} +49\,176\,70050922\\[1mm]
+			\textbf{LinkedIn: }
+			\href{https://www.linkedin.com/in/mohamadahmedkhalil}{\color{white}\nolinkurl{mohamadahmedkhalil}}
+		\end{minipage}
+	\end{tcolorbox}
+}
+
+\newcommand{\ProjectTitle}[1]{%
+  \begin{tcolorbox}[
+  	sharp corners,
+    enhanced,
+    colback=blueDark,
+    colframe=blueDark,
+    left=4mm,right=4mm,top=2.4mm,bottom=2.4mm,
+    width=\textwidth,
+    before skip=0mm,
+    after skip=1mm
+  ]
+  {\large\bfseries\color{white} #1}
+  \end{tcolorbox}
+}
+
+\newcommand{\ImageOrPlaceholder}[1]{%
+  \IfFileExists{#1}{%
+    \includegraphics[width=\linewidth,height=34mm]{#1}%
+  }{%
+    \begin{tcolorbox}[
+      colback=imgBg,
+      colframe=imgBg,
+      arc=2mm,
+      boxrule=0pt,
+      width=\linewidth,
+      height=84mm,
+      valign=center,
+      halign=center,
+      left=0mm,right=0mm,top=0mm,bottom=0mm
+    ]
+      \color{textMuted} Bild hier einf\"ugen
+    \end{tcolorbox}%
+  }%
+}
+
+\newcommand{\CardBody}[2]{%
+  	\begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    colback=white,
+    colframe=cardBorder,
+    arc=3.5mm,
+    width=\linewidth,
+    left=2.5mm,right=2.5mm,top=2.5mm,bottom=2.5mm,
+    boxsep=0mm
+  ]
+    \ImageOrPlaceholder{#1}
+    \vspace{2.2mm}
+
+    {\small #2}
+  \end{tcolorbox}
+}
+
+\newcommand{\ProjectThree}[7]{%
+	\ProjectTitle{#1}
+	\setlength{\tabcolsep}{0pt}
+	\renewcommand{\arraystretch}{1}
+	\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{}}
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#2}{#3}\end{minipage} &
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#4}{#5}\end{minipage} &
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#6}{#7}\end{minipage}
+	\end{tabularx}
+	\vspace{1mm}
+}
+
+\newcommand{\ProjectTwo}[5]{%
+	\ProjectTitle{#1}
+	\setlength{\tabcolsep}{0pt}
+	\renewcommand{\arraystretch}{1}
+	\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{}}
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#2}{#3}\end{minipage} &
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#4}{#5}\end{minipage}
+	\end{tabularx}
+	\vspace{4mm}
+}
+
+\begin{document}
+
+\PortfolioHeader
+
+\ProjectThree
+  {Bachelorarbeit -- Konstruktion und Aufbau eines Baggerarms}
+  {bachelorarbeit-1.jpg}
+  {Konzept und erster Entwurf des Baggerarms. Hier kannst du sp\"ater dein echtes Bild einf\"ugen und den Text direkt anpassen.}
+  {bachelorarbeit-2.jpg}
+  {CAD-Modell und konstruktive Auslegung der Baugruppen. Das Kartenlayout orientiert sich an deiner bisherigen Portfolio-Ansicht.}
+  {bachelorarbeit-3.jpg}
+  {Finaler Aufbau f\"ur den Einsatz in der Lehre. Die blaue Titelbox und der helle Kartenstil sind bewusst an dein Web-Portfolio angelehnt.}
+
+\ProjectThree
+  {Projekt Mehrk\"orperdynamik -- Fahrwerk-Simulation eines Motocross-Motorrads}
+  {mkd-1.jpg}
+  {Aufbau des Mehrk\"orpersystems und Definition der Komponenten. Du kannst f\"ur jedes Projekt genauso weitere Karten erg\"anzen.}
+  {mkd-2.jpg}
+  {Simulation des Fahrwerks unter dynamischer Belastung. Wenn Bilder fehlen, erscheint automatisch ein Platzhalter.}
+  {mkd-3.jpg}
+  {Auswertung der Schwingungs- und Bewegungsantworten. Das Dokument l\"auft mit pdflatex und ist f\"ur A4 ausgelegt.}
+
+\ProjectTwo
+  {So f\"ugst du weitere Projekte hinzu}
+  {placeholder-left.jpg}
+  {Du kannst einfach einen weiteren \texttt{\string\ProjectThree}- oder \texttt{\string\ProjectTwo}-Block unterhalb einf\"ugen. So bleibt die Formatierung immer gleich.}
+  {placeholder-right.jpg}
+  {Wenn du echte Bilder nutzen willst, lege sie in denselben Ordner wie die \texttt{.tex}-Datei oder passe den Dateipfad an, z.\,B. \texttt{img/deinbild.jpg}.}
+
+\end{document}
