@@ -18,6 +18,12 @@
         <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
       </a>
 
+      <button class="menu-toggle" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <ul class="nav-links">
         <li><a href="#about" data-i18n="navAbout">Über mich</a></li>
         <li><a href="pages/projects/index.html" data-i18n="navProjects">Projekte</a></li>
@@ -213,5 +219,13 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>

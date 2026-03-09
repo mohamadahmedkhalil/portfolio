@@ -541,3 +541,68 @@ h1, h2, h3, .logo, .btn {
     margin-bottom: 4px;
   }
 }
+
+/* Hamburger-Button standardmäßig verstecken */
+.menu-toggle {
+  display: none;
+  background: rgba(34, 47, 68, 0.95);
+  border: none;
+  border-radius: 14px;
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #5f6977;
+  border-radius: 999px;
+}
+
+/* Nur für Mobile */
+@media (max-width: 768px) {
+  .nav {
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    right: 16px;
+    width: 220px;
+    background: rgba(34, 47, 68, 0.98);
+    border-radius: 16px;
+    padding: 14px;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    color: white;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+  }
+}
