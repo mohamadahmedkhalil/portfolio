@@ -50,176 +50,194 @@
 
   <script src="projects-data.js"></script>
   <script>
-    const uiTranslations = {
-      de: {
-        pageTitle: "Mein Portfolio",
-        navAbout: "Über mich",
-        navProjects: "Projekte",
-        navContact: "Kontakt",
-        pageHeading: "Mein Portfolio",
-        downloadBtn: "Portfolio als PDF speichern",
-        footerText: "© 2026 Mohamad Khalil",
-        emailLabel: "E-Mail:",
-        phoneLabel: "Telefon:",
-        linkedinLabel: "LinkedIn:"
-      },
-      en: {
-        pageTitle: "My Portfolio",
-        navAbout: "About Me",
-        navProjects: "Projects",
-        navContact: "Contact",
-        pageHeading: "My Portfolio",
-        downloadBtn: "Save Portfolio as PDF",
-        footerText: "© 2026 Mohamad Khalil",
-        emailLabel: "Email:",
-        phoneLabel: "Phone:",
-        linkedinLabel: "LinkedIn:"
-      }
-    };
-
-    let currentLang = localStorage.getItem("language") || "de";
-
-    function createImageCard(item, lang) {
-      const card = document.createElement("div");
-      card.className = "project-image-card";
-
-      card.innerHTML = `
-        <img src="${item.image}" alt="${item.alt[lang]}">
-        <p>${item.text[lang]}</p>
-      `;
-
-      return card;
+  const uiTranslations = {
+    de: {
+      pageTitle: "Mein Portfolio",
+      navAbout: "Über mich",
+      navProjects: "Projekte",
+      navContact: "Kontakt",
+      pageHeading: "Mein Portfolio",
+      downloadBtn: "Portfolio als PDF speichern",
+      footerText: "© 2026 Mohamad Khalil",
+      emailLabel: "E-Mail:",
+      phoneLabel: "Telefon:",
+      linkedinLabel: "LinkedIn:"
+    },
+    en: {
+      pageTitle: "My Portfolio",
+      navAbout: "About Me",
+      navProjects: "Projects",
+      navContact: "Contact",
+      pageHeading: "My Portfolio",
+      downloadBtn: "Save Portfolio as PDF",
+      footerText: "© 2026 Mohamad Khalil",
+      emailLabel: "Email:",
+      phoneLabel: "Phone:",
+      linkedinLabel: "LinkedIn:"
     }
+  };
 
-    function createProjectBlock(project, lang) {
-      const block = document.createElement("section");
-      block.className = "project-detail";
+  let currentLang = localStorage.getItem("language") || "de";
 
-      block.innerHTML = `
-        <a class="project-title-link" href="${project.link}">
-          <div class="project-title-box">${project.title[lang]}</div>
-        </a>
-        <div class="project-image-grid"></div>
-      `;
+  function createImageCard(item, lang) {
+    const card = document.createElement("div");
+    card.className = "project-image-card";
 
-      const grid = block.querySelector(".project-image-grid");
+    card.innerHTML = `
+      <img src="${item.image}" alt="${item.alt[lang]}">
+      <p>${item.text[lang]}</p>
+    `;
 
-      project.items.forEach((item) => {
-        grid.appendChild(createImageCard(item, lang));
-      });
+    return card;
+  }
 
-      return block;
-    }
+  function createProjectBlock(project, lang) {
+    const block = document.createElement("section");
+    block.className = "project-detail";
 
-    function createPrintPage(lang) {
-      const page = document.createElement("section");
-      page.className = "print-a4-page";
+    block.innerHTML = `
+      <a class="project-title-link" href="${project.link}">
+        <div class="project-title-box">${project.title[lang]}</div>
+      </a>
+      <div class="project-image-grid"></div>
+    `;
 
-      page.innerHTML = `
-        <div class="print-a4-header">
-          <div class="print-header-left">
-            <h1>${portfolioData.profile.name}</h1>
-            <p>${portfolioData.profile.title[lang]}</p>
-          </div>
+    const grid = block.querySelector(".project-image-grid");
 
-          <div class="print-header-right">
-            <div><strong>${uiTranslations[lang].emailLabel}</strong> ${portfolioData.profile.email}</div>
-            <div><strong>${uiTranslations[lang].phoneLabel}</strong> ${portfolioData.profile.phone}</div>
-            <div><strong>${uiTranslations[lang].linkedinLabel}</strong> <a href="${portfolioData.profile.linkedinUrl}" target="_blank" rel="noopener noreferrer">${portfolioData.profile.linkedinText}</a></div>
-          </div>
+    project.items.forEach((item) => {
+      grid.appendChild(createImageCard(item, lang));
+    });
+
+    return block;
+  }
+
+  function createPrintPage(lang) {
+    const page = document.createElement("section");
+    page.className = "print-a4-page";
+
+    page.innerHTML = `
+      <div class="print-a4-header">
+        <div class="print-header-left">
+          <h1>${portfolioData.profile.name}</h1>
+          <p>${portfolioData.profile.title[lang]}</p>
         </div>
 
-        <div class="print-page-content">
-          <div class="print-project-stack"></div>
+        <div class="print-header-right">
+          <div><strong>${uiTranslations[lang].emailLabel}</strong> ${portfolioData.profile.email}</div>
+          <div><strong>${uiTranslations[lang].phoneLabel}</strong> ${portfolioData.profile.phone}</div>
+          <div><strong>${uiTranslations[lang].linkedinLabel}</strong> <a href="${portfolioData.profile.linkedinUrl}" target="_blank" rel="noopener noreferrer">${portfolioData.profile.linkedinText}</a></div>
         </div>
-      `;
+      </div>
 
-      return page;
-    }
+      <div class="print-page-content">
+        <div class="print-project-stack"></div>
+      </div>
+    `;
 
-    function buildPrintPages(lang) {
-      const container = document.getElementById("print-a4-pages");
-      container.innerHTML = "";
+    return page;
+  }
 
-      let currentPage = createPrintPage(lang);
-      container.appendChild(currentPage);
+  function waitForImages(container) {
+    const images = Array.from(container.querySelectorAll("img"));
 
-      let currentContent = currentPage.querySelector(".print-page-content");
-      let currentStack = currentPage.querySelector(".print-project-stack");
+    return Promise.all(
+      images.map((img) => {
+        if (img.complete) return Promise.resolve();
 
-      portfolioData.projects.forEach((project) => {
-        const block = createProjectBlock(project, lang);
+        return new Promise((resolve) => {
+          img.addEventListener("load", resolve, { once: true });
+          img.addEventListener("error", resolve, { once: true });
+        });
+      })
+    );
+  }
+
+  async function buildPrintPages(lang) {
+    const container = document.getElementById("print-a4-pages");
+    container.innerHTML = "";
+
+    let currentPage = createPrintPage(lang);
+    container.appendChild(currentPage);
+
+    let currentContent = currentPage.querySelector(".print-page-content");
+    let currentStack = currentPage.querySelector(".print-project-stack");
+
+    for (const project of portfolioData.projects) {
+      const block = createProjectBlock(project, lang);
+      currentStack.appendChild(block);
+
+      await waitForImages(block);
+
+      if (currentContent.scrollHeight > currentContent.clientHeight) {
+        currentStack.removeChild(block);
+
+        currentPage = createPrintPage(lang);
+        container.appendChild(currentPage);
+
+        currentContent = currentPage.querySelector(".print-page-content");
+        currentStack = currentPage.querySelector(".print-project-stack");
+
         currentStack.appendChild(block);
-
-        if (currentContent.scrollHeight > currentContent.clientHeight) {
-          currentStack.removeChild(block);
-
-          currentPage = createPrintPage(lang);
-          container.appendChild(currentPage);
-
-          currentContent = currentPage.querySelector(".print-page-content");
-          currentStack = currentPage.querySelector(".print-project-stack");
-
-          currentStack.appendChild(block);
-        }
-      });
+        await waitForImages(block);
+      }
     }
+  }
 
-    function applyLanguage(lang) {
-      document.documentElement.lang = lang;
-      document.title = uiTranslations[lang].pageTitle;
+  async function applyLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.title = uiTranslations[lang].pageTitle;
 
-      document.querySelectorAll("[data-i18n]").forEach((element) => {
-        const key = element.getAttribute("data-i18n");
-        if (uiTranslations[lang][key]) {
-          element.textContent = uiTranslations[lang][key];
-        }
-      });
-
-      const toggleBtn = document.getElementById("lang-toggle");
-      if (toggleBtn) {
-        toggleBtn.textContent = lang === "de" ? "EN" : "DE";
-      }
-
-      localStorage.setItem("language", lang);
-      buildPrintPages(lang);
-    }
-
-    window.addEventListener("load", async () => {
-      const menuToggle = document.querySelector(".menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
-
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener("click", () => {
-          navLinks.classList.toggle("active");
-        });
-
-        document.querySelectorAll(".nav-links a").forEach((link) => {
-          link.addEventListener("click", () => {
-            navLinks.classList.remove("active");
-          });
-        });
-      }
-
-      if (document.fonts && document.fonts.ready) {
-        await document.fonts.ready;
-      }
-
-      applyLanguage(currentLang);
-
-      const toggleBtn = document.getElementById("lang-toggle");
-      if (toggleBtn) {
-        toggleBtn.addEventListener("click", async () => {
-          currentLang = currentLang === "de" ? "en" : "de";
-
-          if (document.fonts && document.fonts.ready) {
-            await document.fonts.ready;
-          }
-
-          applyLanguage(currentLang);
-        });
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      const key = element.getAttribute("data-i18n");
+      if (uiTranslations[lang][key]) {
+        element.textContent = uiTranslations[lang][key];
       }
     });
-  </script>
+
+    const toggleBtn = document.getElementById("lang-toggle");
+    if (toggleBtn) {
+      toggleBtn.textContent = lang === "de" ? "EN" : "DE";
+    }
+
+    localStorage.setItem("language", lang);
+    await buildPrintPages(lang);
+  }
+
+  window.addEventListener("load", async () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      await document.fonts.ready;
+    }
+
+    await applyLanguage(currentLang);
+
+    const toggleBtn = document.getElementById("lang-toggle");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", async () => {
+        currentLang = currentLang === "de" ? "en" : "de";
+
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+
+        await applyLanguage(currentLang);
+      });
+    }
+  });
+</script>
 </body>
 </html>

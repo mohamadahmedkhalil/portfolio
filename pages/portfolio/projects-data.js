@@ -97,6 +97,140 @@ const portfolioData = {
       ]
     },
 
+    ,
+    {
+      title: {
+        de: "Projekt Mehrkörperdynamik – Fahrwerk-Simulation eines Motocross-Motorrads",
+        en: "Multibody Dynamics Project – Suspension Simulation of a Motocross Motorcycle"
+      },
+      link: "../projects/mehrkoerperdynamik/index.html",
+      items: [
+        {
+          image: "img/mkd-1.jpg",
+          alt: {
+            de: "Modellaufbau",
+            en: "Model setup"
+          },
+          text: {
+            de: "Aufbau des Mehrkörpersystems und Definition der Komponenten.",
+            en: "Setup of the multibody system and definition of the components."
+          }
+        },
+        {
+          image: "img/mkd-2.jpg",
+          alt: {
+            de: "Simulation",
+            en: "Simulation"
+          },
+          text: {
+            de: "Simulation des Fahrwerks unter dynamischer Belastung.",
+            en: "Simulation of the suspension under dynamic loading."
+          }
+        },
+        {
+          image: "img/mkd-3.jpg",
+          alt: {
+            de: "Ergebnisse",
+            en: "Results"
+          },
+          text: {
+            de: "Auswertung der Schwingungs- und Bewegungsantworten.",
+            en: "Evaluation of vibration and motion responses."
+          }
+        }
+      ]
+    },
+
+
+    ,
+    {
+      title: {
+        de: "Projekt Mehrkörperdynamik – Fahrwerk-Simulation eines Motocross-Motorrads",
+        en: "Multibody Dynamics Project – Suspension Simulation of a Motocross Motorcycle"
+      },
+      link: "../projects/mehrkoerperdynamik/index.html",
+      items: [
+        {
+          image: "img/mkd-1.jpg",
+          alt: {
+            de: "Modellaufbau",
+            en: "Model setup"
+          },
+          text: {
+            de: "Aufbau des Mehrkörpersystems und Definition der Komponenten.",
+            en: "Setup of the multibody system and definition of the components."
+          }
+        },
+        {
+          image: "img/mkd-2.jpg",
+          alt: {
+            de: "Simulation",
+            en: "Simulation"
+          },
+          text: {
+            de: "Simulation des Fahrwerks unter dynamischer Belastung.",
+            en: "Simulation of the suspension under dynamic loading."
+          }
+        },
+        {
+          image: "img/mkd-3.jpg",
+          alt: {
+            de: "Ergebnisse",
+            en: "Results"
+          },
+          text: {
+            de: "Auswertung der Schwingungs- und Bewegungsantworten.",
+            en: "Evaluation of vibration and motion responses."
+          }
+        }
+      ]
+    },
+
+
+    ,
+    {
+      title: {
+        de: "Projekt Mehrkörperdynamik – Fahrwerk-Simulation eines Motocross-Motorrads",
+        en: "Multibody Dynamics Project – Suspension Simulation of a Motocross Motorcycle"
+      },
+      link: "../projects/mehrkoerperdynamik/index.html",
+      items: [
+        {
+          image: "img/mkd-1.jpg",
+          alt: {
+            de: "Modellaufbau",
+            en: "Model setup"
+          },
+          text: {
+            de: "Aufbau des Mehrkörpersystems und Definition der Komponenten.",
+            en: "Setup of the multibody system and definition of the components."
+          }
+        },
+        {
+          image: "img/mkd-2.jpg",
+          alt: {
+            de: "Simulation",
+            en: "Simulation"
+          },
+          text: {
+            de: "Simulation des Fahrwerks unter dynamischer Belastung.",
+            en: "Simulation of the suspension under dynamic loading."
+          }
+        },
+        {
+          image: "img/mkd-3.jpg",
+          alt: {
+            de: "Ergebnisse",
+            en: "Results"
+          },
+          text: {
+            de: "Auswertung der Schwingungs- und Bewegungsantworten.",
+            en: "Evaluation of vibration and motion responses."
+          }
+        }
+      ]
+    },
+
     
   ]
 };
