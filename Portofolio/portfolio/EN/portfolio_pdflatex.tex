@@ -2,9 +2,10 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
 \usepackage{lmodern}
 \usepackage[scaled=0.97]{helvet}
+\usepackage{enumitem}
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage[a4paper,margin=0mm]{geometry}
@@ -35,6 +36,26 @@
 \definecolor{textDark}{HTML}{222222}
 \definecolor{textMuted}{HTML}{4A5568}
 \definecolor{imgBg}{HTML}{E9EEF6}
+
+\newlength{\PortfolioCardHeight}
+\setlength{\PortfolioCardHeight}{80mm}
+
+\newlength{\PortfolioImageHeight}
+\setlength{\PortfolioImageHeight}{40mm}
+
+\newcounter{ProjectCounter}
+
+\newenvironment{PortfolioBullets}{%
+	\begin{itemize}[
+		leftmargin=4mm,
+		itemsep=0.8mm,
+		topsep=0mm,
+		parsep=0mm,
+		partopsep=0mm
+		]
+	}{%
+	\end{itemize}
+}
 
 \pagecolor{pageBg}
 \color{textDark}
@@ -67,7 +88,7 @@
 			\raggedright
 			\small
 			\textbf{E-Mail:} mohamadahmedkhalil@gmail.com\\[1mm]
-			\textbf{Telefon:} +49\,176\,70050922\\[1mm]
+			\textbf{Phone:} +49\,176\,70050922\\[1mm]
 			\textbf{LinkedIn: }
 			\href{https://www.linkedin.com/in/mohamadahmedkhalil}{\color{white}\nolinkurl{mohamadahmedkhalil}}
 		\end{minipage}
@@ -82,101 +103,160 @@
 		colframe=blueDark,
 		left=4mm,right=4mm,top=2.4mm,bottom=2.4mm,
 		width=\textwidth,
-		before skip=0mm,
-		after skip=1mm
+		before skip=-1mm,
+		after skip=0mm
 		]
 		{\large\bfseries\color{white} #1}
 	\end{tcolorbox}
 }
 
 \newcommand{\ImageOrPlaceholder}[1]{%
-	\IfFileExists{#1}{%
-		\includegraphics[width=\linewidth,height=34mm]{#1}%
-	}{%
-		\begin{tcolorbox}[
-			colback=imgBg,
-			colframe=imgBg,
-			arc=2mm,
-			boxrule=0pt,
+	\begin{minipage}[c][\PortfolioImageHeight][c]{\linewidth}
+		\centering
+		\IfFileExists{img/#1}{%
+			\includegraphics[
 			width=\linewidth,
-			height=84mm,
-			valign=center,
-			halign=center,
-			left=0mm,right=0mm,top=0mm,bottom=0mm
-			]
-			\color{textMuted} Bild hier einf\"ugen
-		\end{tcolorbox}%
-	}%
+			height=\PortfolioImageHeight,
+			keepaspectratio
+			]{img/#1}%
+		}{%
+			\begin{tcolorbox}[
+				colback=imgBg,
+				colframe=imgBg,
+				arc=2mm,
+				boxrule=0pt,
+				width=\linewidth,
+				height=\PortfolioImageHeight,
+				valign=center,
+				halign=center,
+				left=0mm,right=0mm,top=0mm,bottom=0mm
+				]
+				\color{textMuted} Insert image here
+			\end{tcolorbox}%
+		}%
+	\end{minipage}%
 }
 
-\newcommand{\CardBody}[2]{%
-		\begin{tcolorbox}[
-			enhanced,
-			nobeforeafter,
-			colback=white,
-			colframe=cardBorder,
-			arc=3.5mm,
-			width=\linewidth,
-			left=2.5mm,right=2.5mm,top=2.5mm,bottom=2.5mm,
-			boxsep=0mm
-			]
-			\ImageOrPlaceholder{#1}
-			\vspace{2.2mm}
-			
-			{\small #2}
-		\end{tcolorbox}
+\newcommand{\CardBody}[4][]{%
+	\begin{tcolorbox}[
+		enhanced,
+		nobeforeafter,
+		colback=white,
+		colframe=cardBorder,
+		arc=3.5mm,
+		width=\linewidth,
+		equal height group=#4,
+		valign=top,
+		left=2.5mm,right=2.5mm,top=2.5mm,bottom=0mm,
+		boxsep=0mm,
+		#1
+		]
+		\ImageOrPlaceholder{#2}
+		\vspace{0.2mm}
+		
+		\raggedright
+		{\small #3}
+	\end{tcolorbox}
+}
+
+\newcommand{\ProjectThree}[8][]{%
+	\stepcounter{ProjectCounter}%
+	\ProjectTitle{#2}
+	\setlength{\tabcolsep}{0pt}
+	\renewcommand{\arraystretch}{1}
+	\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{}}
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody[#1]{#3}{#4}{project-\theProjectCounter}\end{minipage} &
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody[#1]{#5}{#6}{project-\theProjectCounter}\end{minipage} &
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody[#1]{#7}{#8}{project-\theProjectCounter}\end{minipage}
+	\end{tabularx}
+	\vspace{4mm}
+}
+
+\newcommand{\ProjectTwo}[6][]{%
+	\stepcounter{ProjectCounter}%
+	\ProjectTitle{#2}
+	\setlength{\tabcolsep}{0pt}
+	\renewcommand{\arraystretch}{1}
+	\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{}}
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody[#1]{#3}{#4}{project-\theProjectCounter}\end{minipage} &
+		\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody[#1]{#5}{#6}{project-\theProjectCounter}\end{minipage}
+	\end{tabularx}
+	\vspace{4mm}
+}
+
+\newcommand{\ProjectOne}[4][]{%
+	\stepcounter{ProjectCounter}%
+	\ProjectTitle{#2}
+	\setlength{\tabcolsep}{0pt}
+	\renewcommand{\arraystretch}{1}
+	\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X@{}}
+		\begin{minipage}[t]{\linewidth}
+			\vspace{0pt}
+			\CardBody[#1]{#3}{#4}{project-\theProjectCounter}
+		\end{minipage}
+	\end{tabularx}
+	\vspace{4mm}
+}
+
+\begin{document}
+	
+	\PortfolioHeader
+	
+	\ProjectTwo[height=66mm]
+	{Bachelor's Thesis -- Design and Construction of a Hydraulic Excavator Arm}
+	{bagger.pdf}
+	{
+		\begin{PortfolioBullets}
+			\item CAD design of a hydraulic excavator arm for use in teaching
+			\item Mechanical dimensioning and component selection
+			\item Integration of hydraulic and electrical subsystems
+		\end{PortfolioBullets}
+	}
+	{Messkarte.pdf}
+	{
+		\begin{PortfolioBullets}
+			\item Development and documentation of the electrical system architecture
+			\item Integration of sensors and an NI-CDAQ data acquisition device
+			\item Control of electrically actuated 4/3-way valves
+		\end{PortfolioBullets}
 	}
 	
-	\newcommand{\ProjectThree}[7]{%
-		\ProjectTitle{#1}
-		\setlength{\tabcolsep}{0pt}
-		\renewcommand{\arraystretch}{1}
-		\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{}}
-			\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#2}{#3}\end{minipage} &
-			\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#4}{#5}\end{minipage} &
-			\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#6}{#7}\end{minipage}
-		\end{tabularx}
-		\vspace{1mm}
+	\ProjectTwo[height=75mm]
+	{Design of a Combination Lock in Siemens NX}
+	{schloss.png}
+	{
+		\begin{PortfolioBullets}
+			\item Modeling of the individual components of a combination lock in Siemens NX
+			\item Parametrization of screws and holes using expressions
+			\item Creation of a fully constrained assembly with assigned materials
+		\end{PortfolioBullets}
+	}
+	{Explosionszeichnung.pdf}
+	{
+		\begin{PortfolioBullets}
+			\item Creation of an exploded view of the complete assembly
+			\item Derivation of a bill of materials, assembly drawing, and fit table
+			\item Technical documentation according to specified drawing and submission guidelines
+		\end{PortfolioBullets}
 	}
 	
-	\newcommand{\ProjectTwo}[5]{%
-		\ProjectTitle{#1}
-		\setlength{\tabcolsep}{0pt}
-		\renewcommand{\arraystretch}{1}
-		\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{}}
-			\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#2}{#3}\end{minipage} &
-			\begin{minipage}[t]{\linewidth}\vspace{0pt}\CardBody{#4}{#5}\end{minipage}
-		\end{tabularx}
-		\vspace{4mm}
+	\ProjectTwo[height=75mm]
+	{Development of a Sensor System for Differentiated Vital Parameter Measurement}
+	{sensor.png}
+	{
+		\begin{PortfolioBullets}
+			\item Development of a compact sensor system for measuring vital parameters
+			\item Selection and integration of the MAX30102 sensor for measuring heart rate and oxygen saturation
+			\item Integration of the SHT31 sensor for measuring temperature and relative humidity
+		\end{PortfolioBullets}
+	}
+	{schaltplan.png}
+	{
+		\begin{PortfolioBullets}
+			\item Overall electrical system design with the XIAO ESP32C6 as the central control unit
+			\item Sensor communication via I2C and display connection via SPI/I2C
+			\item Design of the power supply for mobile, battery-powered operation
+		\end{PortfolioBullets}
 	}
 	
-	\begin{document}
-		
-		\PortfolioHeader
-		
-		\ProjectThree
-		{Bachelorarbeit -- Konstruktion und Aufbau eines Baggerarms}
-		{bachelorarbeit-1.jpg}
-		{Konzept und erster Entwurf des Baggerarms. Hier kannst du sp\"ater dein echtes Bild einf\"ugen und den Text direkt anpassen.}
-		{bachelorarbeit-2.jpg}
-		{CAD-Modell und konstruktive Auslegung der Baugruppen. Das Kartenlayout orientiert sich an deiner bisherigen Portfolio-Ansicht.}
-		{bachelorarbeit-3.jpg}
-		{Finaler Aufbau f\"ur den Einsatz in der Lehre. Die blaue Titelbox und der helle Kartenstil sind bewusst an dein Web-Portfolio angelehnt.}
-		
-		\ProjectThree
-		{Projekt Mehrk\"orperdynamik -- Fahrwerk-Simulation eines Motocross-Motorrads}
-		{mkd-1.jpg}
-		{Aufbau des Mehrk\"orpersystems und Definition der Komponenten. Du kannst f\"ur jedes Projekt genauso weitere Karten erg\"anzen.}
-		{mkd-2.jpg}
-		{Simulation des Fahrwerks unter dynamischer Belastung. Wenn Bilder fehlen, erscheint automatisch ein Platzhalter.}
-		{mkd-3.jpg}
-		{Auswertung der Schwingungs- und Bewegungsantworten. Das Dokument l\"auft mit pdflatex und ist f\"ur A4 ausgelegt.}
-		
-		\ProjectTwo
-		{So f\"ugst du weitere Projekte hinzu}
-		{placeholder-left.jpg}
-		{Du kannst einfach einen weiteren \texttt{\string\ProjectThree}- oder \texttt{\string\ProjectTwo}-Block unterhalb einf\"ugen. So bleibt die Formatierung immer gleich.}
-		{placeholder-right.jpg}
-		{Wenn du echte Bilder nutzen willst, lege sie in denselben Ordner wie die \texttt{.tex}-Datei oder passe den Dateipfad an, z.\,B. \texttt{img/deinbild.jpg}.}
-		
-	\end{document}
+\end{document}
