@@ -9,8 +9,8 @@ const translations = {
     pageHeading: "Bachelorarbeit",
     pageSubtitle: "Konstruktion und Aufbau eines Baggerarms inklusive mathematischer Beschreibung des Aufbaus zum Einsatz in der Lehre.",
 
-    cardTitle: "Projekt 1",
-    cardDescription: "Kurze Beschreibung des Projekts. Zum Beispiel: FEM-Simulation, Ziel des Projekts, verwendete Software und wichtigste Ergebnisse.",
+    overviewHeading: "Einleitung",
+    overviewText: "Für die Studierende an der TU Berlin bei dem Modul Ölhydralische Antriebe und Steurung wurde mir die Aufgabe gegeben ein Baggerarm zu konstruieren und dafür die mathematische der Kinematik zu herleiten.",
 
     footerText: "© 2026 Mohamad Khalil"
   },
