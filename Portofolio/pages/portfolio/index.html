@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/Bewerbungsfoto.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <nav class="nav">
+      <a href="../../index.html" class="logo">
+        <span class="logo-name">MOHAMAD<span class="logo-dot"></span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../../index.html#about" data-i18n="navAbout">Über mich</a></li>
+        <li><a href="../projects/index.html" data-i18n="navProjects">Projekte</a></li>
+        <li><a href="../../index.html#contact" data-i18n="navContact">Kontakt</a></li>
+      </ul>
+
+      <button class="menu-toggle" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <button id="lang-toggle" class="lang-btn">EN</button>
+    </nav>
+
+    <div class="page-hero-text">
+      <h1 data-i18n="pageHeading">Mein Portfolio</h1>
+      <button class="btn download-btn" onclick="window.print()" data-i18n="downloadBtn">
+        Portfolio als PDF speichern
+      </button>
+    </div>
+  </header>
+
+  <main class="projects-page">
+    <div id="print-a4-pages"></div>
+  </main>
+
+  <footer class="footer">
+    <p data-i18n="footerText">© 2026 Mohamad Khalil</p>
+  </footer>
+
+  <script src="projects-data.js"></script>
+  <script>
+  const uiTranslations = {
+    de: {
+      pageTitle: "Mein Portfolio",
+      navAbout: "Über mich",
+      navProjects: "Projekte",
+      navContact: "Kontakt",
+      pageHeading: "Mein Portfolio",
+      downloadBtn: "Portfolio als PDF speichern",
+      footerText: "© 2026 Mohamad Khalil",
+      emailLabel: "E-Mail:",
+      phoneLabel: "Telefon:",
+      linkedinLabel: "LinkedIn:"
+    },
+    en: {
+      pageTitle: "My Portfolio",
+      navAbout: "About Me",
+      navProjects: "Projects",
+      navContact: "Contact",
+      pageHeading: "My Portfolio",
+      downloadBtn: "Save Portfolio as PDF",
+      footerText: "© 2026 Mohamad Khalil",
+      emailLabel: "Email:",
+      phoneLabel: "Phone:",
+      linkedinLabel: "LinkedIn:"
+    }
+  };
+
+  let currentLang = localStorage.getItem("language") || "de";
+
+  function createImageCard(item, lang) {
+    const card = document.createElement("div");
+    card.className = "project-image-card";
+
+    card.innerHTML = `
+      <img src="${item.image}" alt="${item.alt[lang]}">
+      <p>${item.text[lang]}</p>
+    `;
+
+    return card;
+  }
+
+  function createProjectBlock(project, lang) {
+    const block = document.createElement("section");
+    block.className = "project-detail";
+
+    block.innerHTML = `
+      <a class="project-title-link" href="${project.link}">
+        <div class="project-title-box">${project.title[lang]}</div>
+      </a>
+      <div class="project-image-grid"></div>
+    `;
+
+    const grid = block.querySelector(".project-image-grid");
+
+    project.items.forEach((item) => {
+      grid.appendChild(createImageCard(item, lang));
+    });
+
+    return block;
+  }
+
+  function createPrintPage(lang) {
+    const page = document.createElement("section");
+    page.className = "print-a4-page";
+
+    page.innerHTML = `
+      <div class="print-a4-header">
+        <div class="print-header-left">
+          <h1>${portfolioData.profile.name}</h1>
+          <p>${portfolioData.profile.title[lang]}</p>
+        </div>
+
+        <div class="print-header-right">
+          <div><strong>${uiTranslations[lang].emailLabel}</strong> ${portfolioData.profile.email}</div>
+          <div><strong>${uiTranslations[lang].phoneLabel}</strong> ${portfolioData.profile.phone}</div>
+          <div><strong>${uiTranslations[lang].linkedinLabel}</strong> <a href="${portfolioData.profile.linkedinUrl}" target="_blank" rel="noopener noreferrer">${portfolioData.profile.linkedinText}</a></div>
+        </div>
+      </div>
+
+      <div class="print-page-content">
+        <div class="print-project-stack"></div>
+      </div>
+    `;
+
+    return page;
+  }
+
+  function waitForImages(container) {
+    const images = Array.from(container.querySelectorAll("img"));
+
+    return Promise.all(
+      images.map((img) => {
+        if (img.complete) return Promise.resolve();
+
+        return new Promise((resolve) => {
+          img.addEventListener("load", resolve, { once: true });
+          img.addEventListener("error", resolve, { once: true });
+        });
+      })
+    );
+  }
+
+  async function buildPrintPages(lang) {
+    const container = document.getElementById("print-a4-pages");
+    container.innerHTML = "";
+
+    let currentPage = createPrintPage(lang);
+    container.appendChild(currentPage);
+
+    let currentContent = currentPage.querySelector(".print-page-content");
+    let currentStack = currentPage.querySelector(".print-project-stack");
+
+    for (const project of portfolioData.projects) {
+      const block = createProjectBlock(project, lang);
+      currentStack.appendChild(block);
+
+      await waitForImages(block);
+
+      if (currentContent.scrollHeight > currentContent.clientHeight) {
+        currentStack.removeChild(block);
+
+        currentPage = createPrintPage(lang);
+        container.appendChild(currentPage);
+
+        currentContent = currentPage.querySelector(".print-page-content");
+        currentStack = currentPage.querySelector(".print-project-stack");
+
+        currentStack.appendChild(block);
+        await waitForImages(block);
+      }
+    }
+  }
+
+  async function applyLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.title = uiTranslations[lang].pageTitle;
+
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      const key = element.getAttribute("data-i18n");
+      if (uiTranslations[lang][key]) {
+        element.textContent = uiTranslations[lang][key];
+      }
+    });
+
+    const toggleBtn = document.getElementById("lang-toggle");
+    if (toggleBtn) {
+      toggleBtn.textContent = lang === "de" ? "EN" : "DE";
+    }
+
+    localStorage.setItem("language", lang);
+    await buildPrintPages(lang);
+  }
+
+  window.addEventListener("load", async () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      await document.fonts.ready;
+    }
+
+    await applyLanguage(currentLang);
+
+    const toggleBtn = document.getElementById("lang-toggle");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", async () => {
+        currentLang = currentLang === "de" ? "en" : "de";
+
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+
+        await applyLanguage(currentLang);
+      });
+    }
+  });
+</script>
+</body>
+</html>
