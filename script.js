@@ -1,6 +1,6 @@
 const translations = {
   de: {
-    pageTitle: "Mohamad",
+    pageTitle: "Mohamad Khalil",
     heroImageAlt: "Porträt von Mohamad Khalil",
 
     navAbout: "Über mich",
@@ -76,7 +76,7 @@ const translations = {
   },
 
   en: {
-    pageTitle: "Mohamad",
+    pageTitle: "Mohamad Khalil",
     heroImageAlt: "Portrait of Mohamad Khalil",
 
     navAbout: "About Me",
